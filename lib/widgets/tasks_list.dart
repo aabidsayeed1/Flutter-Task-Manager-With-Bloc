@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_app/models/task.dart';
+import 'package:task_app/services/guid_gen.dart';
 import 'package:task_app/widgets/task_tile.dart';
 
 class TasksList extends StatelessWidget {
@@ -18,7 +19,7 @@ class TasksList extends StatelessWidget {
           children: taskList
               .map(
                 (task) => ExpansionPanelRadio(
-                  value: task.id,
+                  value: task.id + GUIDGen.generate(),
                   headerBuilder: (context, isOpen) => TaskTile(task: task),
                   body: ListTile(
                     title: SelectableText.rich(

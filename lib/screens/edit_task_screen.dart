@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_app/blocs/bloc_exports.dart';
 import 'package:task_app/models/task.dart';
-import 'package:task_app/services/guid_gen.dart';
 
 class EditTaskScreen extends StatelessWidget {
   final Task oldTask;
@@ -36,7 +35,6 @@ class EditTaskScreen extends StatelessWidget {
             height: 10,
           ),
           TextField(
-            autofocus: true,
             controller: descriptionController,
             minLines: 3,
             maxLines: 5,
@@ -58,7 +56,7 @@ class EditTaskScreen extends StatelessWidget {
                         newTask: Task(
                           title: titleController.text,
                           description: descriptionController.text,
-                          id: GUIDGen.generate(),
+                          id: oldTask.id,
                           isDone: false,
                           isFavorite: oldTask.isFavorite,
                           date: DateTime.now().toString(),
